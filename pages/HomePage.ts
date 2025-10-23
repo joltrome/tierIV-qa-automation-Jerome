@@ -217,6 +217,38 @@ export class HomePage extends BasePage {
   }
 
   /**
+   * Click Open Source link
+   */
+  async clickOpenSourceLink(): Promise<void> {
+    await this.click(this.openSourceLink);
+    await this.waitForPageLoad();
+  }
+
+  /**
+   * Click Alliance link
+   */
+  async clickAllianceLink(): Promise<void> {
+    await this.click(this.allianceLink);
+    await this.waitForPageLoad();
+  }
+
+  /**
+   * Click Team link
+   */
+  async clickTeamLink(): Promise<void> {
+    await this.click(this.teamLink);
+    await this.waitForPageLoad();
+  }
+
+  /**
+   * Click Services link
+   */
+  async clickServicesLink(): Promise<void> {
+    await this.click(this.servicesLink);
+    await this.waitForPageLoad();
+  }
+
+  /**
    * Open hamburger menu
    */
   async openHamburgerMenu(): Promise<void> {

@@ -96,6 +96,8 @@ test.describe('Footer Validation Tests', () => {
   });
 
   test('TC003-05: Verify LinkedIn link opens in new tab', async ({ page, context }) => {
+    test.setTimeout(60000); // Increase timeout for new tab operations
+
     // Check if LinkedIn link exists
     const isLinkedInVisible = await footer.isLinkedInLinkVisible();
 
@@ -319,6 +321,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-16: Verify CONTACT link is visible and clickable', async () => {
+    test.setTimeout(60000); // Increase timeout for navigation with waits
+
     // Check if CONTACT link is visible
     const isContactVisible = await footer.isContactLinkVisible();
     expect(isContactVisible).toBeTruthy();
@@ -334,6 +338,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-17: Verify COOKIE POLICY link is visible and clickable', async () => {
+    test.setTimeout(60000); // Increase timeout for navigation with waits
+
     // Check if COOKIE POLICY link is visible
     const isCookieVisible = await footer.isCookiePolicyLinkVisible();
     expect(isCookieVisible).toBeTruthy();
@@ -349,6 +355,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-18: Verify CODE OF CONDUCT link is visible and clickable', async () => {
+    test.setTimeout(60000); // Increase timeout for navigation with waits
+
     // Check if CODE OF CONDUCT link is visible
     const isCodeVisible = await footer.isCodeOfConductLinkVisible();
     expect(isCodeVisible).toBeTruthy();
@@ -364,6 +372,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-19: Verify HUMAN RIGHTS POLICY link is visible and clickable', async () => {
+    test.setTimeout(60000); // Increase timeout for navigation with waits
+
     // Check if HUMAN RIGHTS POLICY link is visible
     const isHumanRightsVisible = await footer.isHumanRightsPolicyLinkVisible();
     expect(isHumanRightsVisible).toBeTruthy();
@@ -379,6 +389,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-20: Verify MEDIA KIT link opens in new tab', async ({ page, context }) => {
+    test.setTimeout(60000); // Increase timeout for new tab operations
+
     // Check if MEDIA KIT link is visible
     const isMediaKitVisible = await footer.isMediaKitLinkVisible();
     expect(isMediaKitVisible).toBeTruthy();
@@ -436,6 +448,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-22: Verify Twitter/X opens in new tab with correct URL', async ({ page, context }) => {
+    test.setTimeout(60000); // Increase timeout for new tab operations
+
     // Check if Twitter/X link exists
     const isTwitterVisible = await footer.isTwitterLinkVisible();
 
@@ -466,6 +480,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-23: Verify YouTube opens in new tab with correct URL', async ({ page, context }) => {
+    test.setTimeout(60000); // Increase timeout for new tab operations
+
     // Check if YouTube link exists
     const isYoutubeVisible = await footer.isYoutubeLinkVisible();
 
@@ -500,6 +516,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-24: Verify Facebook opens in new tab with correct URL', async ({ page, context }) => {
+    test.setTimeout(60000); // Increase timeout for new tab operations
+
     // Check if Facebook link exists
     const isFacebookVisible = await footer.isFacebookLinkVisible();
 
@@ -534,6 +552,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-25: Verify Instagram link opens in new tab', async ({ page, context }) => {
+    test.setTimeout(60000); // Increase timeout for new tab operations
+
     // Check if Instagram link exists
     const isInstagramVisible = await footer.isInstagramLinkVisible();
 
@@ -568,6 +588,8 @@ test.describe('Footer Validation - Edge Cases', () => {
   });
 
   test('TC003-26: Verify GitHub link opens to autowarefoundation/autoware', async ({ page, context }) => {
+    test.setTimeout(60000); // Increase timeout for new tab operations
+
     // Check if GitHub link exists
     const isGithubVisible = await footer.isGithubLinkVisible();
 

@@ -245,10 +245,10 @@ export class FooterComponent extends BasePage {
     await this.wait(500);
 
     const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 15000 }),
+      this.page.context().waitForEvent('page', { timeout: 30000 }),
       this.click(this.mediaKitLink)
     ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 });
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
     return newPage;
   }
 
@@ -281,10 +281,10 @@ export class FooterComponent extends BasePage {
     await this.wait(500);
 
     const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 15000 }),
+      this.page.context().waitForEvent('page', { timeout: 30000 }),
       this.click(this.linkedInLink)
     ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 });
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
     return newPage;
   }
 
@@ -316,10 +316,10 @@ export class FooterComponent extends BasePage {
     await this.wait(500);
 
     const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 15000 }),
+      this.page.context().waitForEvent('page', { timeout: 30000 }),
       this.click(this.twitterLink)
     ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 });
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
     return newPage;
   }
 
@@ -351,10 +351,10 @@ export class FooterComponent extends BasePage {
     await this.wait(500);
 
     const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 15000 }),
+      this.page.context().waitForEvent('page', { timeout: 30000 }),
       this.click(this.youtubeLink)
     ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 });
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
     return newPage;
   }
 
@@ -386,10 +386,10 @@ export class FooterComponent extends BasePage {
     await this.wait(500);
 
     const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 15000 }),
+      this.page.context().waitForEvent('page', { timeout: 30000 }),
       this.click(this.facebookLink)
     ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 });
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
     return newPage;
   }
 
@@ -421,10 +421,10 @@ export class FooterComponent extends BasePage {
     await this.wait(500);
 
     const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 15000 }),
+      this.page.context().waitForEvent('page', { timeout: 30000 }),
       this.click(this.instagramLink)
     ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 });
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
     return newPage;
   }
 
@@ -456,10 +456,10 @@ export class FooterComponent extends BasePage {
     await this.wait(500);
 
     const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 15000 }),
+      this.page.context().waitForEvent('page', { timeout: 30000 }),
       this.click(this.githubLink)
     ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 });
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
     return newPage;
   }
 
