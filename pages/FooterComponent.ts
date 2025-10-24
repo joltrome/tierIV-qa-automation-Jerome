@@ -158,9 +158,7 @@ export class FooterComponent extends BasePage {
     await this.scrollToFooter();
     await this.dismissCookieConsent();
     await this.wait(500);
-    await this.contactLink.click({ force: true });
-    await this.wait(1000);
-    await this.waitForPageLoad();
+    await this.clickAndNavigateWithRetry(this.contactLink, 3);
   }
 
   /**
@@ -179,9 +177,7 @@ export class FooterComponent extends BasePage {
     await this.scrollToFooter();
     await this.dismissCookieConsent();
     await this.wait(500);
-    await this.cookiePolicyLink.click({ force: true });
-    await this.wait(1000);
-    await this.waitForPageLoad();
+    await this.clickAndNavigateWithRetry(this.cookiePolicyLink, 3);
   }
 
   /**
@@ -200,9 +196,7 @@ export class FooterComponent extends BasePage {
     await this.scrollToFooter();
     await this.dismissCookieConsent();
     await this.wait(500);
-    await this.codeOfConductLink.click({ force: true });
-    await this.wait(1000);
-    await this.waitForPageLoad();
+    await this.clickAndNavigateWithRetry(this.codeOfConductLink, 3);
   }
 
   /**
@@ -221,9 +215,7 @@ export class FooterComponent extends BasePage {
     await this.scrollToFooter();
     await this.dismissCookieConsent();
     await this.wait(500);
-    await this.humanRightsPolicyLink.click({ force: true });
-    await this.wait(1000);
-    await this.waitForPageLoad();
+    await this.clickAndNavigateWithRetry(this.humanRightsPolicyLink, 3);
   }
 
   /**
@@ -244,12 +236,7 @@ export class FooterComponent extends BasePage {
     await this.dismissCookieConsent();
     await this.wait(500);
 
-    const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 30000 }),
-      this.click(this.mediaKitLink)
-    ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    return newPage;
+    return await this.clickLinkWithRetry(this.mediaKitLink, 3);
   }
 
   /**
@@ -280,12 +267,7 @@ export class FooterComponent extends BasePage {
     await this.dismissCookieConsent();
     await this.wait(500);
 
-    const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 30000 }),
-      this.click(this.linkedInLink)
-    ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    return newPage;
+    return await this.clickLinkWithRetry(this.linkedInLink, 3);
   }
 
   /**
@@ -315,12 +297,7 @@ export class FooterComponent extends BasePage {
     await this.dismissCookieConsent();
     await this.wait(500);
 
-    const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 30000 }),
-      this.click(this.twitterLink)
-    ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    return newPage;
+    return await this.clickLinkWithRetry(this.twitterLink, 3);
   }
 
   /**
@@ -350,12 +327,7 @@ export class FooterComponent extends BasePage {
     await this.dismissCookieConsent();
     await this.wait(500);
 
-    const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 30000 }),
-      this.click(this.youtubeLink)
-    ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    return newPage;
+    return await this.clickLinkWithRetry(this.youtubeLink, 3);
   }
 
   /**
@@ -385,12 +357,7 @@ export class FooterComponent extends BasePage {
     await this.dismissCookieConsent();
     await this.wait(500);
 
-    const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 30000 }),
-      this.click(this.facebookLink)
-    ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    return newPage;
+    return await this.clickLinkWithRetry(this.facebookLink, 3);
   }
 
   /**
@@ -420,12 +387,7 @@ export class FooterComponent extends BasePage {
     await this.dismissCookieConsent();
     await this.wait(500);
 
-    const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 30000 }),
-      this.click(this.instagramLink)
-    ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    return newPage;
+    return await this.clickLinkWithRetry(this.instagramLink, 3);
   }
 
   /**
@@ -455,12 +417,68 @@ export class FooterComponent extends BasePage {
     await this.dismissCookieConsent();
     await this.wait(500);
 
-    const [newPage] = await Promise.all([
-      this.page.context().waitForEvent('page', { timeout: 30000 }),
-      this.click(this.githubLink)
-    ]);
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    return newPage;
+    return await this.clickLinkWithRetry(this.githubLink, 3);
+  }
+
+  /**
+   * Helper method to click a link that opens in new tab with retry logic
+   * @param locator - The link locator to click
+   * @param maxAttempts - Maximum number of retry attempts
+   * @returns Promise with new page context
+   */
+  private async clickLinkWithRetry(locator: Locator, maxAttempts: number = 3): Promise<Page> {
+    let lastError: Error | undefined;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const [newPage] = await Promise.all([
+          this.page.context().waitForEvent('page', { timeout: 30000 }),
+          this.click(locator)
+        ]);
+        await newPage.waitForLoadState('domcontentloaded', { timeout: 30000 });
+        return newPage;
+      } catch (error) {
+        lastError = error as Error;
+        if (attempt < maxAttempts) {
+          console.log(`Retry attempt ${attempt}/${maxAttempts - 1} after error: ${lastError.message}`);
+          await this.wait(1000 * attempt); // Exponential backoff
+          await this.scrollToFooter();
+          await this.dismissCookieConsent();
+          await this.wait(500);
+        }
+      }
+    }
+
+    throw lastError || new Error('Failed to open new tab after retries');
+  }
+
+  /**
+   * Helper method to click a link and navigate (same tab) with retry logic
+   * @param locator - The link locator to click
+   * @param maxAttempts - Maximum number of retry attempts
+   */
+  private async clickAndNavigateWithRetry(locator: Locator, maxAttempts: number = 3): Promise<void> {
+    let lastError: Error | undefined;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        await locator.click({ force: true });
+        await this.wait(1000);
+        await this.waitForPageLoad();
+        return; // Success
+      } catch (error) {
+        lastError = error as Error;
+        if (attempt < maxAttempts) {
+          console.log(`Navigation retry ${attempt}/${maxAttempts - 1} after error: ${lastError.message}`);
+          await this.wait(1000 * attempt); // Exponential backoff
+          await this.scrollToFooter();
+          await this.dismissCookieConsent();
+          await this.wait(500);
+        }
+      }
+    }
+
+    throw lastError || new Error('Failed to navigate after retries');
   }
 
   /**
