@@ -1,4 +1,4 @@
-# Tier IV QA Automation Challenge
+# Tier IV QA Automation Project
 
 ## Project Overview
 
