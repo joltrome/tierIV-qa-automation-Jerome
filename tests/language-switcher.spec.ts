@@ -137,7 +137,9 @@ test.describe('Language Switcher Tests', () => {
     expect(urlChanged || pageLoaded).toBeTruthy();
   });
 
-  test('TC002-07: Verify page content exists in both languages', async () => {
+  test('TC002-07: Verify page content exists in all three languages', async () => {
+    test.setTimeout(60000); // Increase timeout for multiple language switches
+
     // Check in default language (Japanese)
     const japaneseTitle = await homePage.getPageTitle();
     expect(japaneseTitle.length).toBeGreaterThan(0);
@@ -150,9 +152,18 @@ test.describe('Language Switcher Tests', () => {
     const englishTitle = await homePage.getPageTitle();
     expect(englishTitle.length).toBeGreaterThan(0);
 
-    // Titles should exist (may or may not be different based on site implementation)
+    // Switch to Chinese
+    await homePage.switchToChinese();
+    await homePage.waitForPageLoad();
+
+    // Check in Chinese
+    const chineseTitle = await homePage.getPageTitle();
+    expect(chineseTitle.length).toBeGreaterThan(0);
+
+    // Titles should exist in all languages (may or may not be different based on site implementation)
     expect(japaneseTitle).toBeTruthy();
     expect(englishTitle).toBeTruthy();
+    expect(chineseTitle).toBeTruthy();
   });
 
   test('TC002-08: Verify no layout breaks when switching languages', async ({ page }) => {

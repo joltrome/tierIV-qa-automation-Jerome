@@ -55,7 +55,11 @@ This repository contains an automated test suite for the Tier IV website (https:
 - No console errors appear
 
 **Automated Test Cases:**
-- TC001-01 ~ TC001-18 (18 test cases covering all header elements)
+- TC001-01 ~ TC001-03: Basic tests (homepage load, navigation visibility)
+- TC001-04 ~ TC001-09: Same-tab navigation tests (About Us, Open Source, Products, Alliance, Team, Media)
+- TC001-10 ~ TC001-11: New-tab navigation tests (Services, Careers)
+- TC001-12 ~ TC001-14: UI elements tests (Logo, hamburger menu, heading)
+- TC001-15 ~ TC001-18: Edge cases (Responsive, back navigation, console errors, clickability)
 
 ---
 
@@ -94,7 +98,12 @@ This repository contains an automated test suite for the Tier IV website (https:
 - Language selection maintained after page reload
 
 **Automated Test Cases:**
-- TC002-01 ~ TC002-14 (14 test cases covering complete 3×3 language transition matrix)
+- TC002-01: Hamburger menu and language switcher visibility
+- TC002-02 ~ TC002-04: Basic language switching (JP, CN, EN↔JP)
+- TC002-05 ~ TC002-06: Language persistence and URL updates
+- TC002-07: Page content verification in all three languages (JP, EN, CN)
+- TC002-08 ~ TC002-09: Layout stability and multiple switches
+- TC002-10 ~ TC002-14: Edge cases (Browser back, page reload, complete 3×3 transition matrix: JP↔CN, CN↔JP, CN↔EN)
 
 ---
 
@@ -143,7 +152,10 @@ This repository contains an automated test suite for the Tier IV website (https:
 - Footer is accessible via keyboard navigation
 
 **Automated Test Cases:**
-- TC003-01 ~ TC003-26 (26 test cases covering all footer elements and social media platforms)
+- TC003-01 ~ TC003-04: Basic tests (Footer visibility, link count, link texts, social media presence)
+- TC003-05 ~ TC003-09: Same-tab legal links (Contact, Privacy, Cookie Policy, Code of Conduct, Human Rights)
+- TC003-10 ~ TC003-16: New-tab links (Media Kit, LinkedIn, Twitter/X, YouTube, Facebook, Instagram, GitHub)
+- TC003-17 ~ TC003-26: Edge cases (Keyboard navigation, page reload, responsive design, cross-language consistency, URL verification)
 
 ---
 
@@ -508,9 +520,9 @@ Tier IV, Inc. Recruitment Assessment Submission
 
 ## Submission Information
 
-**Project Completion Date:** []
-**Repository Tag:** IN PROGRESS (to be added)
-**Status:** In Progress → Testing CI Pipeline
+**Project Completion Date:** October 24, 2025
+**Repository Tag:** DONE
+**Status:** Complete - All tests have passed in CI
 
 ---
 
