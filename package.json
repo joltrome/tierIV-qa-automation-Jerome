@@ -12,7 +12,7 @@
     "test:chromium": "npx playwright test --project=chromium",
     "test:firefox": "npx playwright test --project=firefox",
     "test:webkit": "npx playwright test --project=webkit",
-    "test:homepage": "npx playwright test tests/homepage.spec.ts",
+    "test:header": "npx playwright test tests/header.spec.ts",
     "test:language": "npx playwright test tests/language-switcher.spec.ts",
     "test:footer": "npx playwright test tests/footer.spec.ts"
   },
