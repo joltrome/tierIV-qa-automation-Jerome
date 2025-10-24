@@ -20,7 +20,9 @@ This repository contains an automated test suite for the Tier IV website (https:
 
 ### Test Case 1: Header Navigation Verification
 **Test ID:** TC001
+
 **Priority:** High
+
 **Objective:** Verify that the header navigation menu is functional and all key header elements are accessible.
 
 **Preconditions:**
@@ -65,7 +67,9 @@ This repository contains an automated test suite for the Tier IV website (https:
 
 ### Test Case 2: Language Switcher Functionality
 **Test ID:** TC002
+
 **Priority:** High
+
 **Objective:** Verify that the language switcher toggles between English, Japanese, and Chinese correctly.
 
 **Preconditions:**
@@ -109,7 +113,9 @@ This repository contains an automated test suite for the Tier IV website (https:
 
 ### Test Case 3: Footer Links Validation
 **Test ID:** TC003
+
 **Priority:** Medium
+
 **Objective:** Verify that footer contains all required links and they are functional.
 
 **Preconditions:**
