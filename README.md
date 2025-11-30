@@ -521,20 +521,8 @@ try {
 
 **Jerome Nicholaz**
 
-Tier IV, Inc. Recruitment Assessment Submission
-
----
-
-## Submission Information
-
-**Project Completion Date:** October 25, 2025
-
-**Repository Tag:** DONE
-
-**Status:** Complete - All tests have passed in CI
-
 ---
 
 ## Acknowledgments
 
-Thank you to Tier IV for the opportunity to work on this assessment. Special thanks to the Playwright documentation and TypeScript team & community for their excellent resources and support.
+Special thanks to the Playwright documentation and TypeScript team & community for their excellent resources and support.
